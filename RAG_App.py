@@ -49,7 +49,7 @@ with st.sidebar:
         splits = text_splitter.split_documents(docs)
 
         embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2",
-                                          model_kwargs={"device":"cpu")
+                                          model_kwargs={"device":"cpu"})
         st.session_state.vector = FAISS.from_documents(splits, embeddings)
 
         st.success("Documents processed successfully!")
