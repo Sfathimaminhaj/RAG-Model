@@ -48,7 +48,8 @@ with st.sidebar:
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
         splits = text_splitter.split_documents(docs)
 
-        embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+        embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2",
+                                          model_kwargs={"device":"cpu")
         st.session_state.vector = FAISS.from_documents(splits, embeddings)
 
         st.success("Documents processed successfully!")
